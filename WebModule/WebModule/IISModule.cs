@@ -24,7 +24,7 @@ namespace WebModule
         public void Init(HttpApplication context)
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("http://fearnesferia.ddns.net/");
+            client.BaseAddress = new Uri("http://fearnesferia.ddns.net");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             var wrapper = new EventHandlerTaskAsyncHelper(SendRequest);

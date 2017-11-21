@@ -8,4 +8,3 @@ E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule
 E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.csproj.CoreCompileInputs.cache
 E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.dll
 E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.pdb
-E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.csprojResolveAssemblyReference.cache
