@@ -1,0 +1,11 @@
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Debug\WebModule.dll.config
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Debug\WebModule.dll
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Debug\WebModule.pdb
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Debug\Newtonsoft.Json.dll
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Debug\System.Net.Http.Formatting.dll
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Debug\Newtonsoft.Json.xml
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Debug\System.Net.Http.Formatting.xml
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Debug\WebModule.csprojResolveAssemblyReference.cache
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Debug\WebModule.csproj.CoreCompileInputs.cache
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Debug\WebModule.dll
+E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Debug\WebModule.pdb
