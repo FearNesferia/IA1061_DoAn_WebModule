@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -10,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using WebModule.Models;
-
+using System.Runtime.Serialization.Json;
 namespace WebModule
 {
     public class IISModule : IHttpModule
     {
         private HttpClient client;
+        private static bool isDetectMode = true;
+        private string websiteUrl;
         public void Dispose()
         {
             throw new NotImplementedException();
@@ -24,7 +25,7 @@ namespace WebModule
         public void Init(HttpApplication context)
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("http://fearnesferia.ddns.net");
+            client.BaseAddress = new Uri("http://localhost:49940");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             var wrapper = new EventHandlerTaskAsyncHelper(SendRequest);
@@ -37,8 +38,10 @@ namespace WebModule
             HttpApplication application = (HttpApplication)sender;
             HttpContext context = application.Context;
             HttpRequest request = context.Request;
-            string path = request.Path;
-            string queryString = request.Url.Query;
+            string path = request.Url.Authority + request.Url.AbsolutePath;
+            websiteUrl = request.Url.Authority;
+            string s = request.Url.Query;
+            string queryString = string.IsNullOrEmpty(s) ? "" : s.Substring(1);
             string payload;
             using (Stream receiveStream = request.InputStream)
             {
@@ -49,15 +52,20 @@ namespace WebModule
             }
             TrafficPackageModel tpm = new TrafficPackageModel()
             {
+                WebsiteUrl = websiteUrl,
                 Path = path,
                 QueryString = queryString,
                 Payload = payload,
             };
-            HttpResponseMessage response = await client.PostAsJsonAsync("v1/api/TrafficPakages", tpm);
-            string message = await response.Content.ReadAsStringAsync();
+
+
+            var response = await client.PostAsync("http://localhost:49940/v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
+            string content = await response.Content.ReadAsStringAsync();
+            ResponeContent responeContent = new ResponeContent(content);
             EventLog log = new EventLog();
             log.Source = "Application";
-            log.WriteEntry(message);
+            log.WriteEntry($"{responeContent.isAttack} - {responeContent.isDetectMode}");
+
         }
     }
 }
