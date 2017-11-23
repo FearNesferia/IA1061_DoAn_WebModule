@@ -25,7 +25,6 @@ namespace WebModule
         public void Init(HttpApplication context)
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:49940");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             var wrapper = new EventHandlerTaskAsyncHelper(SendRequest);
@@ -39,7 +38,8 @@ namespace WebModule
             HttpContext context = application.Context;
             HttpRequest request = context.Request;
             string path = request.Url.Authority + request.Url.AbsolutePath;
-            websiteUrl = request.Url.Authority;
+            //websiteUrl = request.Url.Authority;
+            websiteUrl = "fearnesferia.ddns.net:5000";
             string s = request.Url.Query;
             string queryString = string.IsNullOrEmpty(s) ? "" : s.Substring(1);
             string payload;
@@ -59,13 +59,25 @@ namespace WebModule
             };
 
 
-            var response = await client.PostAsync("http://localhost:49940/v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
+            var response = await client.PostAsync("http://fearnesferia.ddns.net/v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
+            //var response = await client.PostAsync("http://localhost:49940//v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
             string content = await response.Content.ReadAsStringAsync();
             ResponeContent responeContent = new ResponeContent(content);
             EventLog log = new EventLog();
             log.Source = "Application";
             log.WriteEntry($"{responeContent.isAttack} - {responeContent.isDetectMode}");
-
+            if (responeContent.isAttack)
+            {
+                if (responeContent.isDetectMode)
+                {
+                    log.WriteEntry("warning, an anomalous traffic comming, contact module admin");
+                }
+                else
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                }
+            }
+            //log.WriteEntry(content);
         }
     }
 }
