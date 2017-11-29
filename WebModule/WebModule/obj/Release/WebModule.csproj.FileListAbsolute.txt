@@ -11,3 +11,9 @@ C:\Users\fearn\Desktop\zxc\WebModule.dll.config
 C:\Users\fearn\Desktop\zxc\WebModule.dll
 C:\Users\fearn\Desktop\zxc\WebModule.pdb
 E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.csprojResolveAssemblyReference.cache
+C:\DoAn\Projects\GitProject\IA1061_DoAn_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.csproj.CoreCompileInputs.cache
+C:\DoAn\Projects\GitProject\IA1061_DoAn_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.dll
+C:\DoAn\Projects\GitProject\IA1061_DoAn_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.pdb
+C:\DoAn\Projects\GitProject\IA1061_DoAn_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Release\WebModule.dll.config
+C:\DoAn\Projects\GitProject\IA1061_DoAn_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Release\WebModule.dll
+C:\DoAn\Projects\GitProject\IA1061_DoAn_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\bin\Release\WebModule.pdb
