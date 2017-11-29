@@ -10,4 +10,3 @@ C:\inetpub\wwwroot\bin\WebModule.pdb
 C:\Users\fearn\Desktop\zxc\WebModule.dll.config
 C:\Users\fearn\Desktop\zxc\WebModule.dll
 C:\Users\fearn\Desktop\zxc\WebModule.pdb
-E:\Work\DoAn\Projects\IA1061_WebModule\IA1061_DoAn_WebModule\WebModule\WebModule\obj\Release\WebModule.csprojResolveAssemblyReference.cache

@@ -40,6 +40,7 @@ namespace WebModule
             string path = request.Url.Authority + request.Url.AbsolutePath;
             //websiteUrl = request.Url.Authority;
             websiteUrl = "fearnesferia.ddns.net:5000";
+            websiteUrl = "testlocal";
             string s = request.Url.Query;
             string queryString = string.IsNullOrEmpty(s) ? "" : s.Substring(1);
             string payload;
@@ -58,25 +59,33 @@ namespace WebModule
                 Payload = payload,
             };
 
-
-            var response = await client.PostAsync("http://fearnesferia.ddns.net/v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
-            //var response = await client.PostAsync("http://localhost:49940//v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
-            string content = await response.Content.ReadAsStringAsync();
-            ResponeContent responeContent = new ResponeContent(content);
             EventLog log = new EventLog();
             log.Source = "Application";
-            log.WriteEntry($"{responeContent.isAttack} - {responeContent.isDetectMode}");
-            if (responeContent.isAttack)
+            try
             {
-                if (responeContent.isDetectMode)
+                //var response = await client.PostAsync("http://fearnesferia.ddns.net/v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
+                var response = await client.PostAsync("http://localhost:49940//v1/api/TrafficPackages", new FormUrlEncodedContent(tpm.ConvertToJsonValue()));
+                string content = await response.Content.ReadAsStringAsync();
+                ResponeContent responeContent = new ResponeContent(content);
+
+                log.WriteEntry($"{responeContent.isAttack} - {responeContent.isDetectMode}");
+                if (responeContent.isAttack)
                 {
-                    log.WriteEntry("warning, an anomalous traffic comming, contact module admin");
-                }
-                else
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    if (responeContent.isDetectMode)
+                    {
+                        log.WriteEntry("warning, an anomalous traffic comming, contact module admin");
+                    }
+                    else
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                log.WriteEntry(ex.Message);
+            }
+            
             //log.WriteEntry(content);
         }
     }
